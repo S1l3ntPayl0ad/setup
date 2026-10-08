@@ -1,0 +1,34 @@
+" Enable syntax highlighting
+syntax on
+
+" Better indentation
+set autoindent
+set smartindent
+
+" ----- Folding -----
+set foldenable
+"Function to see first line in fold
+function! MyFoldText()
+    if v:foldstart < v:foldend
+        return getline(v:foldstart + 1)
+    endif
+    return getline(v:foldstart)
+endfunction
+set foldopen-=block
+set foldmethod=marker
+set foldlevel=0
+set foldcolumn=0
+set foldtext=MyFoldText()
+set fillchars=fold:\ 
+" Fold markers
+set foldmarker=@@@@@@@@@@@@@@@+++++++++++++++,+++++++++++++++@@@@@@@@@@@@@@@
+
+" HotKeys
+"----------
+" F7 - Create Target Fold
+" F8 - Create empty fold
+" F9 - Fold/Unfold
+
+" F9 = toggle fold
+nnoremap <F9> za
+inoremap <F9> za
